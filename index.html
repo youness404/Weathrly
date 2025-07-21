@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weathrly</title>
+  <link rel="icon" href="/public/icon.png" type="image/png"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer></script>
+  <style>
+    body {
+      /* font-family: monospace; */
+      background: linear-gradient(to right, #e0f7fa, #fff);
+    }
+    .bounce{
+        animation: slow-bounce 2s ease-in-out infinite;
+    }
+    @keyframes slow-bounce {
+      0%, 100% {
+        transform: translateY(-10%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      }
+      50% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      }
+    }
+  </style>
+</head>
+<body class="text-gray-700">
+
+  <div class="max-w-screen-md mx-auto p-6 flex flex-col items-center gap-10">
+
+    <!-- City Info -->
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <img src="/public/loc.png" alt="Location" class="w-10 h-10">
+        <h1 class="text-5xl font-bold text-slate-700">Paris</h1>
+      </div>
+      <img src="/public/sun.png" alt="Weather icon"
+     class="w-64 h-64 mx-auto bounce">
+
+    </div>
+
+    <!-- Main Weather Info -->
+    <div class="w-full flex justify-around items-center bg-white p-6 rounded-xl shadow-lg">
+      <h2 class="text-7xl font-extrabold text-blue-600">26°</h2>
+      <div class="text-center">
+        <h3 class="text-2xl font-semibold mb-2">Clear Sky</h3>
+        <p class="text-lg text-gray-600">H: <span>48°</span> | L: <span>27°</span></p>
+      </div>
+    </div>
+
+    <!-- Forecast Section -->
+    <div class="w-full flex flex-col gap-4">
+
+      <!-- Today Forecast -->
+      <div class="bg-blue-100 p-4 rounded-xl shadow flex flex-col items-center w-40 mx-auto">
+        <h2 class="text-lg font-semibold text-blue-700 mb-2">Today</h2>
+        <img src="/public/sun.png" alt="" class="w-16 h-16 mb-2" />
+        <p class="text-xl font-bold">26° / 20°</p>
+      </div>
+
+      <!-- 6 Days Forecast -->
+      <div class="relative mt-6">
+        <h2 class="text-center my-4 font-bold text-4xl">6 DAYS FORECAST</h2>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+
+            <!-- Repeat this card for each day -->
+            <div class="swiper-slide bg-white rounded-xl shadow-md p-4 text-center hover:scale-105 transition-transform">
+              <h2 class="font-semibold text-blue-500 mb-2">Tue</h2>
+              <img src="/public/sun.png" alt="" class="w-12 h-12 mx-auto mb-2"/>
+              <p class="text-lg font-bold">24° / 21°</p>
+              <p class="text-sm text-gray-500">Clear Sky</p>
+            </div>
+
+            <div class="swiper-slide bg-white rounded-xl shadow-md p-4 text-center hover:scale-105 transition-transform">
+              <h2 class="font-semibold text-blue-500 mb-2">Wed</h2>
+              <img src="/public/sun.png" alt="" class="w-12 h-12 mx-auto mb-2"/>
+              <p class="text-lg font-bold">28° / 20°</p>
+              <p class="text-sm text-gray-500">Clear Sky</p>
+            </div>
+
+            <div class="swiper-slide bg-white rounded-xl shadow-md p-4 text-center hover:scale-105 transition-transform">
+              <h2 class="font-semibold text-blue-500 mb-2">Thu</h2>
+              <img src="/public/sun.png" alt="" class="w-12 h-12 mx-auto mb-2"/>
+              <p class="text-lg font-bold">25° / 21°</p>
+              <p class="text-sm text-gray-500">Clear Sky</p>
+            </div>
+
+            <div class="swiper-slide bg-white rounded-xl shadow-md p-4 text-center hover:scale-105 transition-transform">
+              <h2 class="font-semibold text-blue-500 mb-2">Fri</h2>
+              <img src="/public/sun.png" alt="" class="w-12 h-12 mx-auto mb-2"/>
+              <p class="text-lg font-bold">23° / 22°</p>
+              <p class="text-sm text-gray-500">Clear Sky</p>
+            </div>
+
+            <div class="swiper-slide bg-white rounded-xl shadow-md p-4 text-center hover:scale-105 transition-transform">
+              <h2 class="font-semibold text-blue-500 mb-2">Sat</h2>
+              <img src="/public/sun.png" alt="" class="w-12 h-12 mx-auto mb-2"/>
+              <p class="text-lg font-bold">26° / 23°</p>
+              <p class="text-sm text-gray-500">Clear Sky</p>
+            </div>
+
+            <div class="swiper-slide bg-white rounded-xl shadow-md p-4 text-center hover:scale-105 transition-transform">
+              <h2 class="font-semibold text-blue-500 mb-2">Sun</h2>
+              <img src="/public/sun.png" alt="" class="w-12 h-12 mx-auto mb-2"/>
+              <p class="text-lg font-bold">29° / 22°</p>
+              <p class="text-sm text-gray-500">Clear Sky</p>
+            </div>
+          </div>
+
+          <!-- Pagination + Navigation -->
+           <div class="flex flex-col items-center gap-[120px] mt-6">
+               <div class="swiper-pagination mt-4"></div>
+               <div class="swiper-button-next"></div>
+               <div class="swiper-button-prev"></div>
+               <div class="swiper-scrollbar"></div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Swiper Init Script -->
+  <script src="main.js">
+    
+  </script>
+
+</body>
+</html>
