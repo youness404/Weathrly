@@ -83,10 +83,10 @@ navigator.geolocation.getCurrentPosition(
       })
       .catch(error=>{
         //console.error("Error fetching foreCast : ",error);
-        alert("error : ",error);
+        alert("error : ",error.message);
       })
     } catch (error) {
-      alert("An error occured : ",error);
+      alert("An error occured : ",error.message);
     }
   
     function displayForecast(data) {
@@ -160,6 +160,11 @@ navigator.geolocation.getCurrentPosition(
   /** on Faillure Callback **/
   ()=>{
     alert("Please turn on your location & refresh the page !");
+  },
+  {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
   }
 );
 
