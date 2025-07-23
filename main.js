@@ -163,7 +163,8 @@ navigator.geolocation.getCurrentPosition(
   },
   {
     enableHighAccuracy: true,
-    timeout: 5000,
+    //Timeout increased from 5s to 15s
+    timeout: 15000,
     maximumAge: 0
   }
 );
