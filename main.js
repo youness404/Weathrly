@@ -177,9 +177,9 @@ navigator.geolocation.getCurrentPosition(
     alert(message);
   },
   {
-    enableHighAccuracy: true,
-    //Timeout increased from 5s to 15s
-    timeout: 15000,
+    enableHighAccuracy: false,
+    //Timeout increased from 15s to 30s
+    timeout: 30000,
     maximumAge: 0
   }
 );
