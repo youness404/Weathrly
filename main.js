@@ -25,14 +25,14 @@ navigator.geolocation.getCurrentPosition(
 
       var userData = await map.json();
       var loc = userData[0].name;
-      //console.log("Your location is : ",loc);
+      // console.log("Your location is : ",loc);
       /**  Get Weather details of that city using OpenWeatherMap API **/
       let url = `https://api.openweathermap.org/data/2.5/forecast?&units=metric&`;
       
       let response = await fetch(url + `q=${loc}&` + `appid=${apiKey}`);
       let weatherData = await response.json();
 
-      //console.log("Weather details : ",weatherData);
+      // console.log("Weather details : ",weatherData);
 
       /** Updating Weather info : cityName, temperature(min,max), humidity, weather status **/
       cityName.innerHTML = weatherData.city.name;
@@ -77,12 +77,12 @@ navigator.geolocation.getCurrentPosition(
       fetch(forecastURL)
       .then(res=>res.json())
       .then(data=>{
-        //console.log("5 Days forecast for : ",data.city.name);
+        // console.log("5 Days forecast for : ",data.city.name);
         /**  Displaying 5 Days foreCast **/
          displayForecast(data);
       })
       .catch(error=>{
-        //console.error("Error fetching foreCast : ",error);
+        // console.error("Error fetching foreCast : ",error);
         alert("error : ",error.message);
       })
     } catch (error) {
@@ -158,8 +158,23 @@ navigator.geolocation.getCurrentPosition(
     }
 ,
   /** on Faillure Callback **/
-  ()=>{
-    alert("Please turn on your location & refresh the page !");
+  (error)=>{
+    let message;
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        message = "User denied the request for Geolocation.";
+        break;
+      case error.POSITION_UNAVAILABLE:
+        message = "Location information is unavailable.";
+        break;
+      case error.TIMEOUT:
+        message = "The request to get user location timed out.";
+        break;
+      case error.UNKNOWN_ERROR:
+        message = "An unknown error occurred.";
+        break;
+    }
+    alert(message);
   },
   {
     enableHighAccuracy: true,
